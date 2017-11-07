@@ -1,7 +1,10 @@
 package example.codeclan.com.favouritethings;
 
+import android.content.Intent;
+import android.graphics.Movie;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,4 +30,14 @@ public class ListActivity extends AppCompatActivity {
         ListView listView = (ListView)findViewById(R.id.thing_list);
         listView.setAdapter(thingAdapter);
     }
+
+    public void getThing(View listItem){
+        Thing thing = (Thing) listItem.getTag();
+        Intent i = new Intent(this, ThingActivity.class);
+        i.putExtra("name", thing.getName());
+        i.putExtra("reason", thing.getReason());
+        startActivity(i);
+    }
+
+
 }
